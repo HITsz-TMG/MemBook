@@ -1,9 +1,5 @@
 # MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents
 
-Official implementation of:
-
-**MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents**
-
 [中文文档](README_CN.md) | English
 
 Accepted to **Findings of EMNLP 2026**.
