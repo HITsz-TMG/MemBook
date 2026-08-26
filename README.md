@@ -8,8 +8,6 @@ Official implementation of:
 
 Accepted to **Findings of EMNLP 2026**.
 
-[GitHub](https://github.com/springCozyRock/MemBook) · [Issues](https://github.com/springCozyRock/MemBook/issues)
-
 ## Overview
 
 We introduce **MemBook**, a hierarchical time-aware memory framework designed to improve memory reliability for long-term LLM agents.
@@ -37,11 +35,15 @@ Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** dem
 
 Results remain stable from Medium to Long (gpt-4o unless noted), outperforming the representative system **GAM by absolute 19.57%** on HaluMem-Long:
 
-| Benchmark | Extraction F1 | QA Acc. |
-|-----------|---------------|---------|
-| HaluMem-Medium | **79.21%** | **67.82%** |
-| HaluMem-Long | **79.69%** | **68.37%** |
-| LongMemEval (gpt-4o-mini) | — | **69.4%** (overall) |
+
+| Benchmark                 | Extraction F1 | QA Acc.             |
+| ------------------------- | ------------- | ------------------- |
+| HaluMem-Medium            | **79.21%**    | **67.82%**          |
+| HaluMem-Long              | **79.69%**    | **68.37%**          |
+| LongMemEval (gpt-4o-mini) | —             | **69.4%** (overall) |
+
+
+
 
 ## Project Structure
 
@@ -91,68 +93,72 @@ export OPENAI_BASE_URL="https://api.openai.com/v1"
 
 ## Quick Start
 
-```python
-import os
-from membook import (
-    MemoryAgent,
-    ResearchAgent,
-    OpenAIGenerator,
-    OpenAIGeneratorConfig,
-    InMemoryMemoryStore,
-    InMemoryPageStore,
-)
-
-generator = OpenAIGenerator.from_config(
-    OpenAIGeneratorConfig(
-        model_name="gpt-4o-mini",
-        api_key=os.getenv("OPENAI_API_KEY"),
-        base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
-    )
-)
-memory_store = InMemoryMemoryStore()
-page_store = InMemoryPageStore()
-
-memory_agent = MemoryAgent(
-    generator=generator,
-    memory_store=memory_store,
-    page_store=page_store,
-)
-memory_agent.memorize_dialogue(
-    [
-        {"role": "user", "content": "I prefer morning workouts and drink black coffee."},
-        {"role": "assistant", "content": "Got it — mornings and black coffee."},
-        {"role": "user", "content": "Also allergic to peanuts."},
-        {"role": "assistant", "content": "Noted, no peanuts."},
-    ],
-    session_id="session_0",
-    user_id="demo",
-)
-
-result = ResearchAgent(
-    page_store=page_store,
-    memory_store=memory_store,
-    retrievers={},
-    generator=generator,
-).research("What are my food allergies?")
-print(result.integrated_memory)
+```bash
+cd examples/quickstart
+python basic_usage.py
 ```
 
-More examples: [`examples/quickstart/`](./examples/quickstart/).  
-Reproduce paper results: [`eval/halumem/`](./eval/halumem/) (HaluMem) and `scripts/eval_longmemeval_membook.sh` (LongMemEval).
+## Evaluation
+
+Download the benchmark data locally, then run the scripts below.
+
+### HaluMem
+
+**Data:** [IAAR-Shanghai/HaluMem](https://huggingface.co/datasets/IAAR-Shanghai/HaluMem) ([MemTensor/HaluMem](https://github.com/MemTensor/HaluMem))
+
+```bash
+mkdir -p data/halumem
+cd data/halumem
+wget https://huggingface.co/datasets/IAAR-Shanghai/HaluMem/resolve/main/HaluMem-Medium.jsonl
+wget https://huggingface.co/datasets/IAAR-Shanghai/HaluMem/resolve/main/HaluMem-Long.jsonl
+cd ../..
+```
+
+Expected layout:
+
+```text
+data/halumem/HaluMem-Medium.jsonl
+data/halumem/HaluMem-Long.jsonl
+```
+
+**Run:**
+
+```bash
+cd eval/halumem
+bash run_membook.bash  # edit dataset_list / models / max_users at the top of the script
+```
+
+Or step by step:
+
+```bash
+cd eval/halumem
+python eval_membook.py --medium --frame membook --version medium
+python evaluation.py --frame membook --version medium
+```
+
+Details: [eval/halumem/README.md](./eval/halumem/README.md).
+
+### LongMemEval
+
+**Data:** cleaned LongMemEval-S from [xiaowu0162/longmemeval-cleaned](https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned); official code [xiaowu0162/LongMemEval](https://github.com/xiaowu0162/LongMemEval) for reading templates and `evaluate_qa`.
+
+```bash
+mkdir -p data/longmemeval
+cd data/longmemeval
+wget https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned/resolve/main/longmemeval_s_cleaned.json
+git clone https://github.com/xiaowu0162/LongMemEval.git LongMemEval-main
+cd ../..
+```
+
+**Run:**
+
+```bash
+./scripts/eval_longmemeval_membook.sh
+```
 
 ## Citation
 
-```bibtex
-@inproceedings{membook2026,
-  title     = {MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents},
-  author    = {Bian, Tongshu and Li, Yunxin and Xu, Zhenran and Shi, Tianqi and Wang, Longyue and Hu, Baotian and Zhang, Min},
-  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
-  year      = {2026},
-  note      = {To appear}
-}
-```
-
-
+Coming soon.
 
 ## License
 

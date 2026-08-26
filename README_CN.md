@@ -8,8 +8,6 @@
 
 论文已被 **Findings of EMNLP 2026** 录用。
 
-[GitHub](https://github.com/springCozyRock/MemBook) · [Issues](https://github.com/springCozyRock/MemBook/issues)
-
 ## Overview
 
 我们提出 **MemBook**，一种分层、时间感知的记忆框架，用于提升长期 LLM Agent 的记忆可靠性。
@@ -29,21 +27,19 @@ MemBook 包含两个核心模块：
 
 ## Framework
 
-
 <p align="center">
-  <img src="./assets/membook-architecture.png" width="90%">
+  <img src="./assets/membook-architecture.png" width="100%">
 </p>
-
 
 ## Highlights
 
 从 Medium 到 Long 表现保持稳定（默认 gpt-4o），在 HaluMem-Long 上相对代表性系统 **GAM 绝对提升 19.57%**：
 
 
-| Benchmark                | 抽取 F1      | QA Acc.            |
-| ------------------------ | ---------- | ------------------ |
-| HaluMem-Medium           | **79.21%** | **67.82%**         |
-| HaluMem-Long             | **79.69%** | **68.37%**         |
+| Benchmark                  | 抽取 F1      | QA Acc.             |
+| -------------------------- | ---------- | ------------------- |
+| HaluMem-Medium             | **79.21%** | **67.82%**          |
+| HaluMem-Long               | **79.69%** | **68.37%**          |
 | LongMemEval（gpt-4o-mini） | —          | **69.4%**（overall） |
 
 
@@ -97,68 +93,72 @@ export OPENAI_BASE_URL="https://api.openai.com/v1"
 
 ## 快速开始
 
-```python
-import os
-from membook import (
-    MemoryAgent,
-    ResearchAgent,
-    OpenAIGenerator,
-    OpenAIGeneratorConfig,
-    InMemoryMemoryStore,
-    InMemoryPageStore,
-)
-
-generator = OpenAIGenerator.from_config(
-    OpenAIGeneratorConfig(
-        model_name="gpt-4o-mini",
-        api_key=os.getenv("OPENAI_API_KEY"),
-        base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
-    )
-)
-memory_store = InMemoryMemoryStore()
-page_store = InMemoryPageStore()
-
-memory_agent = MemoryAgent(
-    generator=generator,
-    memory_store=memory_store,
-    page_store=page_store,
-)
-memory_agent.memorize_dialogue(
-    [
-        {"role": "user", "content": "我喜欢早上健身，常喝美式咖啡。"},
-        {"role": "assistant", "content": "好的，记下早上健身和美式。"},
-        {"role": "user", "content": "另外我对花生过敏。"},
-        {"role": "assistant", "content": "已记录花生过敏。"},
-    ],
-    session_id="session_0",
-    user_id="demo",
-)
-
-result = ResearchAgent(
-    page_store=page_store,
-    memory_store=memory_store,
-    retrievers={},
-    generator=generator,
-).research("我对什么食物过敏？")
-print(result.integrated_memory)
+```bash
+cd examples/quickstart
+python basic_usage.py
 ```
 
-更多示例：`[examples/quickstart/](./examples/quickstart/)`。  
-论文复现：`[eval/halumem/](./eval/halumem/)`（HaluMem）与 `scripts/eval_longmemeval_membook.sh`（LongMemEval）。
+## 评测
+
+请先本地下载评测数据，再运行对应脚本。
+
+### HaluMem
+
+**数据：** [IAAR-Shanghai/HaluMem](https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)（说明见 [MemTensor/HaluMem](https://github.com/MemTensor/HaluMem)）
+
+```bash
+mkdir -p data/halumem
+cd data/halumem
+wget https://huggingface.co/datasets/IAAR-Shanghai/HaluMem/resolve/main/HaluMem-Medium.jsonl
+wget https://huggingface.co/datasets/IAAR-Shanghai/HaluMem/resolve/main/HaluMem-Long.jsonl
+cd ../..
+```
+
+期望目录：
+
+```text
+data/halumem/HaluMem-Medium.jsonl
+data/halumem/HaluMem-Long.jsonl
+```
+
+**运行：**
+
+```bash
+cd eval/halumem
+bash run_membook.bash  # 可在脚本顶部改 dataset_list / 模型 / max_users
+```
+
+或分步：
+
+```bash
+cd eval/halumem
+python eval_membook.py --medium --frame membook --version medium
+python evaluation.py --frame membook --version medium
+```
+
+更多说明见 [eval/halumem/README.md](./eval/halumem/README.md)。
+
+### LongMemEval
+
+**数据：** cleaned LongMemEval-S 来自 [xiaowu0162/longmemeval-cleaned](https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned)；官方代码 [xiaowu0162/LongMemEval](https://github.com/xiaowu0162/LongMemEval) 用于阅读模板与 `evaluate_qa` 判分。
+
+```bash
+mkdir -p data/longmemeval
+cd data/longmemeval
+wget https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned/resolve/main/longmemeval_s_cleaned.json
+git clone https://github.com/xiaowu0162/LongMemEval.git LongMemEval-main
+cd ../..
+```
+
+**运行：**
+
+```bash
+./scripts/eval_longmemeval_membook.sh
+```
 
 ## 引用
 
-```bibtex
-@inproceedings{membook2026,
-  title     = {MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents},
-  author    = {Bian, Tongshu and Li, Yunxin and Xu, Zhenran and Shi, Tianqi and Wang, Longyue and Hu, Baotian and Zhang, Min},
-  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
-  year      = {2026},
-  note      = {To appear}
-}
-```
-
-
+Coming soon.
 
 ## 许可证
 
