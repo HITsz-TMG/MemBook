@@ -1,7 +1,5 @@
 # MemBook: 面向抗幻觉智能体的分层推理记忆框架
 
-官方实现：
-
 **MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents**
 
 [English](README.md) | 中文文档
