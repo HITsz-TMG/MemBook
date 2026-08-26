@@ -1,0 +1,10 @@
+# Compatibility entry point for tools that expect requirements.txt.
+# pyproject.toml is the single source of truth for dependencies.
+-e .
+
+# Install optional features explicitly when needed:
+#   pip install -e ".[dense]"       # API-based dense retrieval
+#   pip install -e ".[dense-local]" # local embedding models
+#   pip install -e ".[bm25]"        # Lucene/Pyserini retrieval
+#   pip install -e ".[evaluation]"  # benchmark dependencies
+#   pip install -e ".[dev]"         # tests and packaging tools

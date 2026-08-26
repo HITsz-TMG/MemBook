@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use MemBook, please cite the paper below."
+title: "MemBook"
+version: 0.2.0
+license: MIT
+repository-code: "https://github.com/springCozyRock/MemBook"
+authors:
+  - family-names: Bian
+    given-names: Tongshu
+  - family-names: Li
+    given-names: Yunxin
+  - family-names: Xu
+    given-names: Zhenran
+  - family-names: Shi
+    given-names: Tianqi
+  - family-names: Wang
+    given-names: Longyue
+  - family-names: Hu
+    given-names: Baotian
+  - family-names: Zhang
+    given-names: Min
+preferred-citation:
+  type: conference-paper
+  title: "MemBook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant LLM Agents"
+  authors:
+    - family-names: Bian
+      given-names: Tongshu
+    - family-names: Li
+      given-names: Yunxin
+    - family-names: Xu
+      given-names: Zhenran
+    - family-names: Shi
+      given-names: Tianqi
+    - family-names: Wang
+      given-names: Longyue
+    - family-names: Hu
+      given-names: Baotian
+    - family-names: Zhang
+      given-names: Min
+  collection-title: "Findings of the Association for Computational Linguistics: EMNLP 2026"
+  year: 2026
