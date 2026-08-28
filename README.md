@@ -2,7 +2,7 @@
 
 [中文文档](README_CN.md) | English
 
-Accepted to **Findings of EMNLP 2026**.
+Accepted to **EMNLP 2026**.
 
 ## Overview
 
