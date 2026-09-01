@@ -21,6 +21,7 @@ MemBook contains two key components:
 
 Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** demonstrate that MemBook improves long-term memory extraction, retrieval, and downstream QA performance while reducing hallucination propagation.
 
+
 ## 🏗️ Framework
 
 <p align="center">
@@ -29,7 +30,7 @@ Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** dem
 
 ## ✨ Highlights
 
-Results remain stable from Medium to Long (gpt-4o unless noted), outperforming the representative system **GAM by absolute 19.57%** on HaluMem-Long:
+MemBook delivers consistently strong results across benchmarks: **79.21 / 79.69 Extraction F1** and **67.82 / 68.37 QA accuracy** on HaluMem-Medium / Long, with the lowest hallucination rates (**12.78 / 12.84**) and **69.4 overall accuracy** on LongMemEval using gpt-4o-mini. Notably, MemBook remains stable under ultra-long contexts, while most competing memory systems suffer sharp performance drops as the context length increases.
 
 <p align="center">
   <img src="./assets/membook-metrics.png" width="100%">

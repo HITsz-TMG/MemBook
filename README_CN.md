@@ -31,7 +31,7 @@ MemBook 包含两个核心模块：
 
 ## ✨ 亮点
 
-从 Medium 到 Long 表现保持稳定（默认 gpt-4o），在 HaluMem-Long 上相对代表性系统 **GAM 绝对提升 19.57%**：
+MemBook 在各项基准上表现稳定且强劲：在 HaluMem-Medium / Long 上分别达到 **79.21 / 79.69 抽取 F1** 与 **67.82 / 68.37 QA 准确率**，同时取得最低幻觉率（**12.78 / 12.84**），并在 LongMemEval 上使用 gpt-4o-mini 达到 **69.4 overall accuracy**。值得注意的是，在超长上下文场景下 MemBook 依然保持稳定，而多数对比记忆系统会随着上下文长度增加出现明显性能跳水。
 
 <p align="center">
   <img src="./assets/membook-metrics.png" width="100%">
