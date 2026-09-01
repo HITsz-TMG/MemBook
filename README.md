@@ -4,7 +4,7 @@
 
 Accepted to **EMNLP 2026**.
 
-## Overview
+## 🧠 Overview
 
 We introduce **MemBook**, a hierarchical time-aware memory framework designed to improve memory reliability for long-term LLM agents.
 
@@ -21,16 +21,19 @@ MemBook contains two key components:
 
 Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** demonstrate that MemBook improves long-term memory extraction, retrieval, and downstream QA performance while reducing hallucination propagation.
 
-## Framework
+## 🏗️ Framework
 
 <p align="center">
   <img src="./assets/membook-architecture.png" width="90%">
 </p>
 
-## Highlights
+## ✨ Highlights
 
 Results remain stable from Medium to Long (gpt-4o unless noted), outperforming the representative system **GAM by absolute 19.57%** on HaluMem-Long:
 
+<p align="center">
+  <img src="./assets/membook-metrics.png" width="90%">
+</p>
 
 #### 🔹HaluMem-Medium
 
@@ -63,7 +66,7 @@ Results remain stable from Medium to Long (gpt-4o unless noted), outperforming t
 ### 
 
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 MemBook/
@@ -90,7 +93,7 @@ MemBook/
 
 
 
-## Installation
+## ⚙️ Installation
 
 **Requirements**
 
@@ -109,14 +112,14 @@ export OPENAI_BASE_URL="https://api.openai.com/v1"
 
 
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 cd examples/quickstart
 python basic_usage.py
 ```
 
-## Evaluation
+## 📊 Evaluation
 
 Download the benchmark data locally, then run the scripts below.
 
@@ -174,10 +177,10 @@ cd ../..
 ./scripts/eval_longmemeval_membook.sh
 ```
 
-## Citation
+## 📝 Citation
 
 Coming soon.
 
-## License
+## 📄 License
 
 MIT — see [LICENSE](LICENSE).
