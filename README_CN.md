@@ -4,9 +4,9 @@
 
 [English](README.md) | 中文文档
 
-论文已被 **Findings of EMNLP 2026** 录用。
+论文已被 **EMNLP 2026** 录用。
 
-## Overview
+## 🧠 概览
 
 我们提出 **MemBook**，一种分层、时间感知的记忆框架，用于提升长期 LLM Agent 的记忆可靠性。
 
@@ -23,27 +23,52 @@ MemBook 包含两个核心模块：
 
 在 **HaluMem-Medium**、**HaluMem-Long** 与 **LongMemEval** 上的实验表明，MemBook 提升了长期记忆抽取、检索与下游 QA 表现，并抑制幻觉跨阶段传播。
 
-## Framework
+## 🏗️ 框架
 
 <p align="center">
   <img src="./assets/membook-architecture.png" width="100%">
 </p>
 
-## Highlights
+## ✨ 亮点
 
 从 Medium 到 Long 表现保持稳定（默认 gpt-4o），在 HaluMem-Long 上相对代表性系统 **GAM 绝对提升 19.57%**：
 
+<p align="center">
+  <img src="./assets/membook-metrics.png" width="100%">
+</p>
 
-| Benchmark                  | 抽取 F1      | QA Acc.             |
-| -------------------------- | ---------- | ------------------- |
-| HaluMem-Medium             | **79.21%** | **67.82%**          |
-| HaluMem-Long               | **79.69%** | **68.37%**          |
-| LongMemEval（gpt-4o-mini） | —          | **69.4%**（overall） |
+#### 🔹HaluMem-Medium
+
+| 方法 | 抽取 F1 ↑ | QA Acc. ↑ | 幻觉率 ↓ |
+| :--: | :-------: | :-------: | :------: |
+| Mem0 | 57.31 | 53.02 | 19.17 |
+| Mem0-Graph | 57.85 | 54.66 | 19.28 |
+| A-Mem | <u>78.58</u> | 55.31 | 23.04 |
+| Supermemory | 56.90 | 54.07 | 22.24 |
+| Memobase | 25.13 | 35.33 | 29.97 |
+| Zep | - | <u>55.47</u> | 21.92 |
+| Memory OS | 43.06 | 54.27 | 37.80 |
+| GAM | 72.55 | 47.92 | <u>14.73</u> |
+| **MemBook** | **79.21** | **67.82** | **12.78** |
+
+#### 🔸HaluMem-Long
+
+| 方法 | 抽取 F1 ↑ | QA Acc. ↑ | 幻觉率 ↓ |
+| :--: | :-------: | :-------: | :------: |
+| Mem0 | 6.22 | 28.11 | 17.29 |
+| Mem0-Graph | 4.36 | 32.44 | 21.82 |
+| A-Mem | <u>77.71</u> | <u>54.72</u> | 24.11 |
+| Supermemory | 65.54 | 53.77 | 22.21 |
+| Memobase | 11.55 | 33.60 | 29.46 |
+| Zep | - | 50.19 | 22.51 |
+| Memory OS | 34.26 | 38.17 | 42.07 |
+| GAM | 59.22 | 48.80 | <u>13.32</u> |
+| **MemBook** | **79.69** | **68.37** | **12.84** |
+
+### 
 
 
-
-
-## 项目结构
+## 📁 项目结构
 
 ```
 MemBook/
@@ -70,7 +95,7 @@ MemBook/
 
 
 
-## 安装
+## ⚙️ 安装
 
 **环境要求**
 
@@ -89,14 +114,14 @@ export OPENAI_BASE_URL="https://api.openai.com/v1"
 
 
 
-## 快速开始
+## 🚀 快速开始
 
 ```bash
 cd examples/quickstart
 python basic_usage.py
 ```
 
-## 评测
+## 📊 评测
 
 请先本地下载评测数据，再运行对应脚本。
 
@@ -154,10 +179,10 @@ cd ../..
 ./scripts/eval_longmemeval_membook.sh
 ```
 
-## 引用
+## 📝 引用
 
 Coming soon.
 
-## 许可证
+## 📄 许可证
 
 MIT — 见 [LICENSE](LICENSE)。

@@ -24,7 +24,7 @@ Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** dem
 ## 🏗️ Framework
 
 <p align="center">
-  <img src="./assets/membook-architecture.png" width="90%">
+  <img src="./assets/membook-architecture.png" width="100%">
 </p>
 
 ## ✨ Highlights
@@ -32,36 +32,36 @@ Our experiments on **HaluMem-Medium**, **HaluMem-Long**, and **LongMemEval** dem
 Results remain stable from Medium to Long (gpt-4o unless noted), outperforming the representative system **GAM by absolute 19.57%** on HaluMem-Long:
 
 <p align="center">
-  <img src="./assets/membook-metrics.png" width="90%">
+  <img src="./assets/membook-metrics.png" width="100%">
 </p>
 
 #### 🔹HaluMem-Medium
 
-| Method      | Extraction F1 ↑ |    QA Acc. ↑ |    Halluc. ↓ |
-| ----------- | --------------: | -----------: | -----------: |
-| Mem0        |           57.31 |        53.02 |        19.17 |
-| Mem0-Graph  |           57.85 |        54.66 |        19.28 |
-| A-Mem       |    <u>78.58</u> |        55.31 |        23.04 |
-| Supermemory |           56.90 |        54.07 |        22.24 |
-| Memobase    |           25.13 |        35.33 |        29.97 |
-| Zep         |               - | <u>55.47</u> |        21.92 |
-| Memory OS   |           43.06 |        54.27 |        37.80 |
-| GAM         |           72.55 |        47.92 | <u>14.73</u> |
-| **MemBook** |       **79.21** |    **67.82** |    **12.78** |
+| Method | Extraction F1 ↑ | QA Acc. ↑ | Halluc. ↓ |
+| :----: | :-------------: | :-------: | :-------: |
+| Mem0 | 57.31 | 53.02 | 19.17 |
+| Mem0-Graph | 57.85 | 54.66 | 19.28 |
+| A-Mem | <u>78.58</u> | 55.31 | 23.04 |
+| Supermemory | 56.90 | 54.07 | 22.24 |
+| Memobase | 25.13 | 35.33 | 29.97 |
+| Zep | - | <u>55.47</u> | 21.92 |
+| Memory OS | 43.06 | 54.27 | 37.80 |
+| GAM | 72.55 | 47.92 | <u>14.73</u> |
+| **MemBook** | **79.21** | **67.82** | **12.78** |
 
 #### 🔸HaluMem-Long
 
-| Method      | Extraction F1 ↑ |    QA Acc. ↑ |    Halluc. ↓ |
-| ----------- | --------------: | -----------: | -----------: |
-| Mem0        |            6.22 |        28.11 |        17.29 |
-| Mem0-Graph  |            4.36 |        32.44 |        21.82 |
-| A-Mem       |    <u>77.71</u> | <u>54.72</u> |        24.11 |
-| Supermemory |           65.54 |        53.77 |        22.21 |
-| Memobase    |           11.55 |        33.60 |        29.46 |
-| Zep         |               - |        50.19 |        22.51 |
-| Memory OS   |           34.26 |        38.17 |        42.07 |
-| GAM         |           59.22 |        48.80 | <u>13.32</u> |
-| **MemBook** |       **79.69** |    **68.37** |    **12.84** |
+| Method | Extraction F1 ↑ | QA Acc. ↑ | Halluc. ↓ |
+| :----: | :-------------: | :-------: | :-------: |
+| Mem0 | 6.22 | 28.11 | 17.29 |
+| Mem0-Graph | 4.36 | 32.44 | 21.82 |
+| A-Mem | <u>77.71</u> | <u>54.72</u> | 24.11 |
+| Supermemory | 65.54 | 53.77 | 22.21 |
+| Memobase | 11.55 | 33.60 | 29.46 |
+| Zep | - | 50.19 | 22.51 |
+| Memory OS | 34.26 | 38.17 | 42.07 |
+| GAM | 59.22 | 48.80 | <u>13.32</u> |
+| **MemBook** | **79.69** | **68.37** | **12.84** |
 
 ### 
 
