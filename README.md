@@ -180,7 +180,32 @@ cd ../..
 
 ## 📝 Citation
 
-Coming soon.
+```bash
+@inproceedings{bian-etal-2026-membook,
+    title = "{M}em{B}ook: A Hierarchical Reasoning-based Memory Framework for Hallucination-Resistant {LLM} Agents",
+    author = "Bian, Tongshu  and
+      li, Yunxin  and
+      Xu, Zhenran  and
+      Shi, Tianqi  and
+      Wang, Longyue  and
+      Hu, Baotian  and
+      Zhang, Min",
+    editor = "Lee, Hung-Yi  and
+      Dev, Sunipa  and
+      Li, Jessy  and
+      Elliott, Desmond",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {EMNLP} 2026",
+    month = oct,
+    year = "2026",
+    address = "Budapest, Hungary",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-emnlp.1847/",
+    doi = "10.18653/2026.findings-emnlp.1847",
+    pages = "39444--39470",
+    ISBN = "979-8-89176-462-0",
+    abstract = "Memory is a cornerstone of foundation model-based agents for ultra-long-term interaction. However, hallucinated or noisy information can accumulate inside memory systems and progressively contaminate downstream tasks. Existing systems face two key challenges: (1) memory construction mechanisms trade off between faithful recall and hallucination suppression; and (2) retrieval relies on shallow semantic similarity, failing to distinguish logically irrelevant memories. We propose **MemBook**, a hierarchical time-aware memory framework for hallucination-resistant agents. For memory construction, MemBook introduces a stateful memory stabilization mechanism that prevents hallucinated claims from being consolidated into persistent memory and organizes reliable memories into an evolving Session{--}Chapter{--}Memory Point hierarchy. For memory retrieval, MemBook performs reasoning-based hierarchical retrieval over this evolving memory book to identify temporally and logically relevant memories. Experiments on HaluMem-Medium, HaluMem-Long, and LongMemEval show that MemBook improves extraction quality and downstream performance while suppressing cross-stage hallucination propagation. Notably, MemBook remains stable under ultra-long contexts, outperforming GAM by absolute 19.57{\%} QA accuracy improvement on HaluMem-Long."
+}
+```
 
 ## 📄 License
 
